@@ -47,7 +47,14 @@ let b = Math.floor(Math.random() * 7) + 3;
 let product = a*b;
 let equation = prompt("Question " + question + ": " + a + " * " + b);
 let answer = equation;
-    if (answer == product)alert ("Correct!") && right++
-    else alert("Incorrect!")
+    if (answer == product){
+        alert ("Correct!");
+         return true;
+    }
+    else{
+
+    alert("Incorrect!")
+return false;
+}
 
 }
