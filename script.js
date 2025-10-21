@@ -27,11 +27,11 @@ let right = askQuestions(questions);
  * @return: {integer} right (0-questions)
  */
 function askQuestions(questions) {
-let question = 1;
+
 right = 0;
-while(question<=questions){
+for(let question = 1;question<=questions;question++){
     right+=askQuestion(question);
-    question++
+    
 }
 return right;
 }
