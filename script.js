@@ -9,7 +9,7 @@
  */
 var low = 3;
 var high = 9;
-var questions = 5;         
+var questions = 5;
 var mistakes = [];
 /* Function main() THIS REPLACES askQuestions(
  * Calls setup to change default values
@@ -19,14 +19,14 @@ var mistakes = [];
  * @param: none
  * @return: none
  */
-function main(){
-let score = 0;
-let questions = setUp()
-for (let question = 1;question<=questions; question++){
-score += askQuestion(question)
+function main() {
+   let score = 0;
+   let questions = setUp()
+   for (let question = 1; question <= questions; question++) {
+      score += askQuestion(question)
 
-}
-showStats(score,questions)
+   }
+   showStats(score, questions)
 }
 
 /* Function setUp()
@@ -35,15 +35,14 @@ showStats(score,questions)
  * @param: none
  * @return: {integer} questions
  */
-function setUp(){
-let defaults = confirm("Keep Defaults?")
-if (defaults == false) {
-    low=changeVar("low")
-    high=changeVar("high")
-    questions=changeVar("questions")
-}
-else alert("Defaults kept")
-return questions; 
+function setUp() {
+   let defaults = confirm("Keep Defaults?")
+   if (defaults == false) {
+      low = changeVar("low")
+      high = changeVar("high")
+      questions = changeVar("questions")
+   } else alert("Defaults kept")
+   return questions;
 }
 
 
@@ -53,10 +52,10 @@ return questions;
  * @param: variable
  * @return: {integer} value 
  */
-function changeVar(variable){
- let value = prompt("Choose your " + variable + " value") 
-value = parseInt(value);
-return value;
+function changeVar(variable) {
+   let value = prompt("Choose your " + variable + " value")
+   value = parseInt(value);
+   return value;
 }
 
 /* Function askQuestion(question) 
@@ -65,18 +64,17 @@ return value;
  * @param: {integer} question 
  * @return: boolean value 
  */
-function askQuestion(question){
-let a = (Math.floor(Math.random)*high-low+1)+low ;
-let b = (Math.floor(Math.random)*high-low+1)+low ;
-let product = a*b;
-let equation = question 
-question = a + "*" + b + " = ?"
-let answer = prompt(equation)
+function askQuestion(question) {
+   let a = (Math.floor(Math.random) * high - low + 1) + low;
+   let b = (Math.floor(Math.random) * high - low + 1) + low;
+   let product = a * b;
+   let equation = question
+   question = a + "*" + b + " = ?"
+   let answer = prompt(equation)
+   if (answer = product) alert("Correct!")
+   else mistakes.push(a, b);
+   alert("Incorrect")
 
-if (answer = product) alert("Correct!")
-else mistakes.push(a,b);{
-alert ("Incorrect")
-}
 }
 
 /* Function showStats()
@@ -89,23 +87,48 @@ alert ("Incorrect")
  * @param: score, questions
  * @return: none
  */
-function showStats(){
-let tables = true;
-alert
-
-    
+function showStats() {
+   let tables = true;
+   alert("You got " + score + " out of " + questions + " correct!")
+   let more = any
+   if (score == questions)
+      alert("Perfection Badge")
+   else {
+      alert("You got " + score + " out of " + questions + " right")
+      let errors = questions - score
+      alert("Here are your errors: " + showErrors(errors))
+   }
+   while (tables == true)
+      confirm("Do you want to study " + more + " tables")
+   if (tables == true)
+      prompt("Show table for which factor?")
+   showTable(factor)
+   more = more
 }
-/* Function showErrors(errors)
- * Provides feedback on errors by showing pairs of factors.
- * statsAnalysis() shows most frequent factor in errors.  
- * @param: errors
- * @return: none
- */
+   /* Function showErrors(errors)
+    * Provides feedback on errors by showing pairs of factors.
+    * statsAnalysis() shows most frequent factor in errors.  
+    * @param: errors
+    * @return: none
+    */
+   function showErrors(errors) {
+      let feedback = ("Here are your errors: " + "\n")
+      for (error = 0; error < errors; error += 2) {
+         feedback += mistakes[error] * mistakes[error + 1] + "\n"
+      }
+      alert(feedback)
+      statsAnalysis();
+   }
 
-
-/* Function showTable(factor)
- * Display the table for the factor passed as a parameter
- * Builds table line by line with a loop, then shows table * One line for each factor value. low to high 
- * @param: factor
- * @return: none
- */
+   function showTable(factor) {
+      let table = "Times table for " + factor
+      for (let line = low; line >= high; line++){
+            table+=line*factor + " = " + line*factor
+      }
+    
+   }
+   /* Function showTable(factor)
+    * Display the table for the factor passed as a parameter
+    * Builds table line by line with a loop, then shows table * One line for each factor value. low to high 
+    * @param: factor
+    * @return: none
