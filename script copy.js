@@ -21,7 +21,7 @@ var mistakes = [];
  */
 function main() {
    let score = 0;
-   questions = setUp()
+   let questions = setUp()
    for (let question = 1; question <= questions; question++) {
       score += askQuestion(question)
 
@@ -65,20 +65,16 @@ function changeVar(variable) {
  * @return: boolean value 
  */
 function askQuestion(question) {
-   let a = Math.floor(Math.random() * (high - low + 1)) + low;
-   let b = Math.floor(Math.random() * (high - low + 1)) + low;
+   let a = (Math.floor(Math.random) * (high - low + 1)) + low;
+   let b = (Math.floor(Math.random) * (high - low + 1)) + low;
    let product = a * b;
-    question = a + "*" + b + " = ?"
-   let answer = prompt(question)
-   if (parseInt(answer) == product){
-    alert("Correct!")
-    return true;
-   }
-   else{ 
-      alert("Incorrect")
-      mistakes.push(a, b)
-      return false;
-   }
+   let equation = question
+   question = a + "*" + b + " = ?"
+   let answer = prompt(equation)
+   if (answer = product) alert("Correct!")
+   else mistakes.push(a, b);
+   alert("Incorrect")
+
 }
 
 /* Function showStats()
@@ -92,8 +88,8 @@ function askQuestion(question) {
  * @return: none
  */
 function showStats(score,questions) {
-  let factor = 0;
    let tables = true;
+   alert("You got " + score + " out of " + questions + " correct!")
    let more = "any"
    if (score == questions)
       alert("Perfection Badge")
@@ -102,13 +98,12 @@ function showStats(score,questions) {
       let errors = questions - score
       alert(showErrors(errors))
    }
-   while (tables != true){
-      confirm("Do you want to study " + more + " tables");
-   if (tables == true);
-   factor = prompt("Show table for which factor?");
-   showTable(factor);
-   more = "more";
-}
+   while (tables != true)
+      confirm("Do you want to study " + more + " tables")
+   if (tables == true)
+      prompt("Show table for which factor?")
+   showTable(factor)
+   more = "more"
 }
    /* Function showErrors(errors)
     * Provides feedback on errors by showing pairs of factors.
@@ -126,11 +121,10 @@ function showStats(score,questions) {
    }
 
    function showTable(factor) {
-      let table = ("Times table for " + factor)
+      let table = "Times table for " + factor
       for (let line = low; line >= high; line++){
             table+=line*factor + " = " + line*factor
-                  
-         }
-       alert(table)
+      }
+       
    }
   
