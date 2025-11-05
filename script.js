@@ -102,14 +102,16 @@ function showStats(score,questions) {
       let errors = questions - score
       alert(showErrors(errors))
    }
-   while (tables != true){
+   while (tables == true){
       confirm("Do you want to study " + more + " tables");
-   if (tables == true);
-   factor = prompt("Show table for which factor?");
-   showTable(factor);
-   more = "more";
+      if (tables == true) {
+         factor = prompt("Show table for which factor?");
+         showTable(factor);
+         more = "more";
+      }
+   }
 }
-}
+
    /* Function showErrors(errors)
     * Provides feedback on errors by showing pairs of factors.
     * statsAnalysis() shows most frequent factor in errors.  
@@ -124,7 +126,12 @@ function showStats(score,questions) {
       
      return feedback;
    }
-
+   /* Function showTable(factor)
+   * Display the table for the factor passed as a parameter
+   * Builds table line by line with a loop, then shows table * One line for each factor value. low to high 
+   * @param: factor
+   * @return: none
+   */
    function showTable(factor) {
       let table = ("Times table for " + factor)
       for (let line = low; line >= high; line++){
